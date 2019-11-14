@@ -23,11 +23,8 @@ def win_build(num):
             l += i
         return 0
 
-l_build = []
-for i in range(n_try):
-    # 建造結果の内部表現: 1~1000の整数
-    num = (random.randrange(1000)) + 1
-    l_build.append(num)
+# 建造結果の内部表現: 1~1000の整数
+l_build = [(random.randrange(1000)) + 1 for i in range(n_try)]
 
 if len(set([win_build(i) for i in l_build])) == (len(pool) + 1):
     is_win = True
