@@ -8,17 +8,20 @@ n_try = int(args[1])
 
 # 目的キャラの排出率の内訳
 pool = [int(i) for i in args[2:]]
+win_total = sum(pool)
 
 def win_build(num):
-    l = 0
-    label = 1
-    result = 0
-    for i in pool:
-        if num > l and num <= l + i:
-            result = label
-        label += 1
-        l += i
-    return result
+    if num > win_total:
+        return 0
+    else:
+        l = 0
+        label = 1
+        for i in pool:
+            if num > l and num <= l + i:
+                return label
+            label += 1
+            l += i
+        return 0
 
 l_build = []
 for i in range(n_try):
